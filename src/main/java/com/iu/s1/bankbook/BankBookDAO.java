@@ -15,9 +15,9 @@ public class BankBookDAO {
 	private final String NAMESPACE="com.iu.s1.bankbook.BankBookDAO.";
 	
 	//detail
-	public BankBookDTO detail(Long num)throws Exception{
+	public BankBookDTO detail(BankBookDTO bankBookDTO)throws Exception{
 		
-		return sqlSession.selectOne(NAMESPACE+"detail", num);
+		return sqlSession.selectOne(NAMESPACE+"detail", bankBookDTO);
 	}
 	
 //		public void info() {
