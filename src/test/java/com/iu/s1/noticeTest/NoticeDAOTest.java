@@ -48,7 +48,7 @@ public class NoticeDAOTest extends MyJunitTest {
 	@Test
 	public void detail() throws Exception{
 		NoticeDTO noticeDTO = new NoticeDTO();
-		
+	//	noticeDTO=noticeDAO.detail(1L)
 		noticeDTO.setNum(1L);
 		assertNotNull(noticeDTO);
 	}
