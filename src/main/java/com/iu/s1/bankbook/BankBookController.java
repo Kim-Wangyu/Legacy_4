@@ -18,6 +18,13 @@ public class BankBookController {
 	@Autowired
 	private BankBookService bankBookService;
 	
+	//delete
+	@RequestMapping("delete")
+	public String delete(BankBookDTO bankBookDTO)throws Exception{
+		int result = bankBookService.delete(bankBookDTO); //숫자리턴하니까, 성공여부
+		return "redirect:./list";
+	}
+	
 	//detail
 	@RequestMapping(value = "detail", method = RequestMethod.GET)
 	public void detail(BankBookDTO bankBookDTO, Model model)throws Exception{

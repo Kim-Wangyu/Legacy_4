@@ -15,5 +15,6 @@
 <h3>BookContents : ${dto.bookContents}</h3>
 
 <a href="./list">List</a>
+<a href="./delete?bookNumber=${dto.bookNumber}">DELETE</a>
 </body>
 </html>
