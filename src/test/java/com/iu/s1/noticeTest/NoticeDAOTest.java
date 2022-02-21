@@ -16,13 +16,13 @@ public class NoticeDAOTest extends MyJunitTest {
 	@Autowired
 	private NoticeDAO noticeDAO;
 	
-	@Test
+	//@Test
 	public void check() {
 		assertNotNull(noticeDAO);
 	}
 
 	//list
-	@Test
+	//@Test
 	public void list() throws Exception{
 		List<NoticeDTO> ar = noticeDAO.list();
 		
@@ -32,20 +32,21 @@ public class NoticeDAOTest extends MyJunitTest {
 	//insert
 	@Test
 	public void add()throws Exception{
+		for(int i =0;i<10;i++) {
 		NoticeDTO noticeDTO = new NoticeDTO();
-		noticeDTO.setTitle("t2");
-		noticeDTO.setContents("t2");
-		noticeDTO.setWriter("t2");
-		noticeDTO.setRegDate("20210217");
-		noticeDTO.setHit(2L);
+		noticeDTO.setTitle("NoticeTitle"+i);
+		noticeDTO.setContents("NoticeCon"+i);
+		noticeDTO.setWriter("Writer"+i);
+		noticeDTO.setRegDate("2021021"+i);
+		noticeDTO.setHit(2L+i);
 		
 		int result = noticeDAO.add(noticeDTO);
-		
-		assertEquals(1, result);
+		}
+	//	assertEquals(1, result);
 	}
 	
 	//detail
-	@Test
+	//@Test
 	public void detail() throws Exception{
 		NoticeDTO noticeDTO = new NoticeDTO();
 	//	noticeDTO=noticeDAO.detail(1L)
@@ -55,7 +56,7 @@ public class NoticeDAOTest extends MyJunitTest {
 	
 	
 	//delete
-	@Test
+	//@Test
 	public void delete() throws Exception{
 		NoticeDTO noticeDTO = new NoticeDTO();
 		noticeDTO.setNum(2L);
