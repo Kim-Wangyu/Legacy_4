@@ -15,7 +15,7 @@
 
 	</insert>
 
-	<select id="detail" parameterType="NoticeDTO" resultType=".NoticeDTO">
+	<select id="detail" parameterType="NoticeDTO" resultType="NoticeDTO">
 		SELECT * FROM NOTICE WHERE NUM=#{num}
 	</select>
 
