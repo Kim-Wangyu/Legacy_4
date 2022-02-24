@@ -5,12 +5,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<c:import url="../template/header_css.jsp"></c:import>
+<title>Insert title here</title> 
+<c:import url="../template/header_css.jsp"></c:import> 
+<link href="../resources/css/table.css" rel="stylesheet">
 </head>
-<body>
-<c:import url="../template/header.jsp"></c:import>
-	<h1>Notice List Page</h1>
+<body> 
+<c:import url="../template/header.jsp"> </c:import>  
+	<h1 align="center">Notice List Page</h1>
 
 	<table>
 		<thead>
@@ -23,6 +24,8 @@
 				<th>hit</th>
 			</tr>
 		</thead>
+		
+		
 		<tbody>
 			<c:forEach items="${list}" var="notice">
 
@@ -42,6 +45,6 @@
 
 
 	</table>
-
+<a href="./add">ADD</a>
 </body>
 </html>

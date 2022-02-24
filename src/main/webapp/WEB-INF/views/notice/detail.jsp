@@ -17,5 +17,10 @@
 <h3>NoticeregDate : ${dto.regDate}</h3>
 <h3>NoticeHit : ${dto.hit}</h3>
 
+
+<a href="./list">List</a>
+<a href="./update?num=${dto.num}">update</a>
+<a href="./delete?num=${dto.num}">DELETE</a>
+
 </body>
 </html>

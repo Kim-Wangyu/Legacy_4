@@ -5,17 +5,27 @@
 
 <mapper namespace="com.iu.s1.notice.NoticeDAO">
 
+	<update id="update" parameterType="NoticeDTO">
+		UPDATE NOTICE SET TITLE=#{title}, contents=#{contents}
+		WHERE num=#{num}
+	</update>
+
 	<select id="list" resultType="NoticeDTO">
 		SELECT * FROM NOTICE
 	</select>
 
 	<insert id="add" parameterType="NoticeDTO">
 		INSERT INTO NOTICE
-		VALUES (NOTICE_SEQ.NEXTVAL,#{title},#{contents},#{writer},#{regDate},#{hit})
+		VALUES
+		(NOTICE_SEQ.NEXTVAL,#{title},#{contents},#{writer},sysdate,0)
 
 	</insert>
 
-	<select id="detail" parameterType="NoticeDTO" resultType="NoticeDTO">
+
+
+
+	<select id="detail" parameterType="NoticeDTO"
+		resultType="NoticeDTO">
 		SELECT * FROM NOTICE WHERE NUM=#{num}
 	</select>
 

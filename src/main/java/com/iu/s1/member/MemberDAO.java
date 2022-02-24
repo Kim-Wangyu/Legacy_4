@@ -4,6 +4,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.iu.s1.bankbook.BankBookDTO;
+
 @Repository
 public class MemberDAO {
 
@@ -11,6 +13,11 @@ public class MemberDAO {
 	@Autowired
 	private SqlSession sqlSession;
 	private final String NAMESPACE="com.iu.s1.member.MemberDAO.";
+	
+	//update
+	public int update(MemberDTO memberDTO)throws Exception{
+		return sqlSession.update(NAMESPACE+"update",memberDTO);
+	}
 	
 	
 	public MemberDTO mypage(MemberDTO memberDTO)throws Exception{

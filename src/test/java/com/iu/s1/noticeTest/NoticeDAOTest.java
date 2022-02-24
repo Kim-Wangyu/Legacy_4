@@ -37,7 +37,7 @@ public class NoticeDAOTest extends MyJunitTest {
 		noticeDTO.setTitle("NoticeTitle"+i);
 		noticeDTO.setContents("NoticeCon"+i);
 		noticeDTO.setWriter("Writer"+i);
-		noticeDTO.setRegDate("2021021"+i);
+		
 		noticeDTO.setHit(2L+i);
 		
 		int result = noticeDAO.add(noticeDTO);

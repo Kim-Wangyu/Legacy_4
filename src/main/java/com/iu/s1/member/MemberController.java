@@ -14,12 +14,31 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.iu.s1.bankbook.BankBookDTO;
+
 @Controller
 @RequestMapping(value = "/member/*")
 public class MemberController {
 
 	@Autowired
 	private MemberService memberService;
+	
+	//update
+	@RequestMapping(value = "update", method = RequestMethod.POST)
+	public String update(MemberDTO memberDTO) throws Exception {
+		int result = memberService.update(memberDTO);
+		return "redirect:./mypage";
+
+	}
+
+	// update
+	@RequestMapping(value = "update", method = RequestMethod.GET)
+	public void update(MemberDTO memberDTO, Model model) throws Exception {
+
+		memberDTO = memberService.mypage(memberDTO);
+		model.addAttribute("dto", memberDTO);
+	}
+	
 	
 	//mypage
 	@RequestMapping(value = "mypage", method = RequestMethod.GET)

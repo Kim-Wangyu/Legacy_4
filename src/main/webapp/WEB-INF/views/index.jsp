@@ -13,14 +13,14 @@
 <body>
 	<c:import url="./template/header.jsp"></c:import>
 
-	<h1>Index Page</h1>
+	<h1 align="center">Index Page</h1>
 
-	<h3>${member.name}님
+	<h3 align="right">${member.name}님
 		환영합니다 <span class="material-icons-outlined"> account_circle </span>
 
 	</h3>
 
-	<div>
+	<div align="right">
 		<c:if test="${not empty member}">
 			<a href="./member/mypage">Mypage</a>
 			<a href="./member/logout">Logout</a>
@@ -31,6 +31,6 @@
 		</c:if>
 	</div>
 
-	<P>The time on the server is ${serverTime}.</P>
+	<P align="right">The time on the server is ${serverTime}.</P>
 </body>
 </html>

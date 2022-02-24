@@ -14,5 +14,9 @@
 <h3>${dto.phone}</h3>
 <h3>${dto.email}</h3>
 
+
+<a href="../">Back</a>
+<a href="./update?id=${dto.id}">update</a>
+
 </body>
 </html>

@@ -5,11 +5,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<c:import url="../template/header_css.jsp"></c:import> 
 <title>Insert title here</title>
+<link href="../resources/css/table.css" rel="stylesheet">
 </head>
 <body>
-	<h1>BankBook List Page</h1>
-	<h1>${list}</h1>
+<c:import url="../template/header.jsp"> </c:import>  
+	<h1 align="center">BankBook List Page</h1>
+
 	
 	<!-- bookName, bookRate,bookSale -->
 	
