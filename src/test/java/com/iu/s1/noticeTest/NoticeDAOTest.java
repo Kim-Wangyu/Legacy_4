@@ -30,7 +30,7 @@ public class NoticeDAOTest extends MyJunitTest {
 	}
 	
 	//insert
-	@Test
+	//@Test
 	public void add()throws Exception{
 		for(int i =0;i<10;i++) {
 		NoticeDTO noticeDTO = new NoticeDTO();
