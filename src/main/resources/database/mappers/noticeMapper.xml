@@ -6,13 +6,12 @@
 <mapper namespace="com.iu.s1.notice.NoticeDAO">
 
 	<update id="update" parameterType="NoticeDTO">
-		UPDATE NOTICE SET TITLE=#{title}, contents=#{contents}
+		UPDATE NOTICE SET
+		TITLE=#{title}, contents=#{contents}
 		WHERE num=#{num}
 	</update>
 
-	<select id="list" resultType="NoticeDTO">
-		SELECT * FROM NOTICE
-	</select>
+	<!-- <select id="list" resultType="NoticeDTO"> SELECT * FROM NOTICE </select> -->
 
 	<insert id="add" parameterType="NoticeDTO">
 		INSERT INTO NOTICE
@@ -20,6 +19,49 @@
 		(NOTICE_SEQ.NEXTVAL,#{title},#{contents},#{writer},sysdate,0)
 
 	</insert>
+
+
+	<select id="total" resultType="Long" parameterType="Pager">
+		SELECT COUNT(NUM) FROM NOTICE
+		WHERE
+		NUM>0
+		AND
+
+		<choose>
+			<when test="kind=='col1'">
+				TITLE
+			</when>
+			<otherwise>
+				CONTENTS
+			</otherwise>
+		</choose>
+
+		LIKE '%'|| #{search} ||'%'
+
+	</select>
+
+
+	<select id="list" parameterType="Pager" resultType="NoticeDTO">
+		SELECT * FROM
+		(SELECT rownum R, N.* FROM
+		(SELECT * FROM NOTICE WHERE
+		NUM>0
+		AND
+
+		<choose>
+			<when test="kind=='col1'">
+				TITLE
+			</when>
+			<otherwise>
+				CONTENTS
+			</otherwise>
+		</choose>
+
+		LIKE '%'|| #{search} ||'%'
+		ORDER BY NUM DESC) N)
+		WHERE R BETWEEN
+		#{startRow} AND #{lastRow}
+	</select>
 
 
 

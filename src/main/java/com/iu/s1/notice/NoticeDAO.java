@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.iu.s1.bankbook.BankBookDTO;
+import com.iu.s1.util.Pager;
 
 @Repository
 public class NoticeDAO {
@@ -21,10 +22,15 @@ public class NoticeDAO {
 	}
 
 	// list
-	public List<NoticeDTO> list() throws Exception {
-		String name = "";
-		return sqlSession.selectList(NAMESPACE + "list");
+	public List<NoticeDTO> list(Pager pager) throws Exception {
+		
+		return sqlSession.selectList(NAMESPACE + "list", pager);
 
+	}
+	
+	//total
+	public Long total(Pager pager)throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"total", pager);
 	}
 
 	// insert
