@@ -13,9 +13,15 @@ public class Pager {
 	// 끝번호
 	private Long lastRow;
 
+	//------------------검색 사용 변수----------------------------
+	private String search;
+	private String kind;
+	
 	//------------------JSP 사용 변수 ---------------------------
 	private Long startNum;
 	private Long lastNum;
+	
+	
 	
 	
 	private boolean pre;
@@ -29,10 +35,10 @@ public class Pager {
 	
 	public void makeNum(Long totalCount) {
 		//1. 전체 row 갯수
-		totalCount = 204L;
+		
 		//2. 전체 페이지 갯수 구하기
 		Long totalPage = totalCount/this.getPerPage();
-		if(totalCount%this.getPerPage()!=0) {			//이거 퍼페이지맞냐 강사님은 페이지적으셨는데
+		if(totalCount%this.getPerPage()!=0) {			
 			totalPage++;
 		}
 		//3. 블럭당 갯수
@@ -157,6 +163,27 @@ public class Pager {
 
 	public void setNext(boolean next) {
 		this.next = next;
+	}
+
+	public String getSearch() {
+		//검색어가 없으면 search=null
+		if(this.search==null) {
+			this.search="";
+		}
+//		this.search="%"+this.search+"%";    좋은방법은 아님, 
+		return search;
+	}
+
+	public void setSearch(String search) {
+		this.search = search;
+	}
+
+	public String getKind() {
+		return kind;
+	}
+
+	public void setKind(String kind) {
+		this.kind = kind;
 	}
 
 	

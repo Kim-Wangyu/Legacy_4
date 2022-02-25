@@ -21,22 +21,6 @@
 
 	</insert>
 
-
-	<select id="total" resultType="Long">
-		SELECT COUNT(NUM) FROM NOTICE
-		
-	</select>
-	
-	
-		<select id="list" parameterType="Pager" resultType="NoticeDTO">
-		SELECT * FROM
-		(SELECT rownum R, B.* FROM
-		(SELECT * FROM NOTICE WHERE NUM>0 ORDER BY NUM DESC) N)
-		WHERE R BETWEEN #{startRow} AND #{lastRow}
-	</select>
-
-
-
 	<select id="detail" parameterType="NoticeDTO"
 		resultType="NoticeDTO">
 		SELECT * FROM NOTICE WHERE NUM=#{num}
