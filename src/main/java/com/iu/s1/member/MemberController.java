@@ -70,13 +70,25 @@ public class MemberController {
 
 		memberDTO = memberService.login(memberDTO); // 마지막으로 뺌? 처음에서?
 
-		String path = "redirect:./login";
-
-		if (memberDTO != null) {
+//		String path = "redirect:./login";
+//
+//		if (memberDTO != null) {
+//			session.setAttribute("member", memberDTO);
+//			path = "redirect:../";
+//		}
+		
+		String message="Login Fail";
+		String p= "./login";
+		
+		if(memberDTO != null) {
 			session.setAttribute("member", memberDTO);
-			path = "redirect:../";
+			message="Login Success";
+			p="../";
 		}
 
+		model.addAttribute("message",message);
+		model.addAttribute("path",p);
+		String path="common/result";
 		return path;
 
 	}
@@ -91,7 +103,11 @@ public class MemberController {
 	// join
 	@RequestMapping(value = "join", method = RequestMethod.GET)
 	public void join() throws Exception {
-
+			
 	}
 
+	@RequestMapping(value = "joinCheck", method = RequestMethod.GET)
+	public void joinCheck()throws Exception{
+		
+	}
 }

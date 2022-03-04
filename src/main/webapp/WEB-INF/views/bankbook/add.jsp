@@ -10,9 +10,9 @@
 	<h1>BankBook ADD Page</h1>
 	
 	<form action="./add" method="POST">
-		BookName<input type="text" name="bookName">
-		BookRate<input type="text" name="bookRate">
-		BookContents <textarea name="bookContents" rows="" cols=""></textarea>
+		BookName<input type="text" name="bookName" id="bName">
+		BookRate<input type="text" name="bookRate" id="bRate">
+		BookContents <textarea name="bookContents" rows="" cols="" id="bContents"></textarea>
 		BookSale 
 		<div>
 			팜<input type="radio" name="bookSale" value="1"> 
@@ -22,5 +22,6 @@
 		<input type="submit" value="ADD">
 		
 	</form>
+	<script type="text/javascript" src="../resources/js/bankbook.js"></script>
 </body>
 </html>
