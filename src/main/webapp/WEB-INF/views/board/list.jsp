@@ -7,15 +7,32 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <c:import url="../template/header_css.jsp"></c:import>
+		
+		
 </head>
 <body>
 <c:import url="../template/header.jsp"></c:import>
-	<h1>Notice List Page</h1>
+	<h1>${board} List Page</h1>
+<!--검색창-->
+				<div>
+					<form action="./list" method="get">
+						<fieldset>
+							<select name="kind">
+								<option value="col1">제목</option>
+								<option value="col2">본문</option>
+								<option value="col3">작성자</option>
+							</select>
 
+							<input type="text" name="search" value="${pager.search}">
+							<button type="submit">검색</button>
+						</fieldset>
+					</form>
+
+				</div>
 	<table>
 		<thead>
 			<tr>
-				<th>num</th>
+				
 				<th>title</th>
 				<th>contents</th>
 				<th>writer</th>
@@ -24,15 +41,20 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach items="${list}" var="notice">
+			<c:forEach items="${list}" var="dto">
 
 				<tr>
 					
-					<td> <a href="./detail?num=${notice.num}"> ${notice.title}</a></td>
-					<td>${notice.contents}</td>
-					<td>${notice.writer}</td>
-					<td>${notice.regDate}</td>
-					<td>${notice.hit}</td>
+					<td> <a href="./detail?num=${dto.num}"> 
+					<c:catch>
+						<c:forEach begin="1" end="${dto.depth}">--</c:forEach>
+					</c:catch>
+					
+					${dto.title}</a></td>
+					<td>${dto.contents}</td>
+					<td>${dto.writer}</td>
+					<td>${dto.regDate}</td>
+					<td>${dto.hit}</td>
 
 				</tr>
 
@@ -56,8 +78,11 @@
 		<c:if test="${pager.next}">
 			<a href="./list?page=${pager.lastNum+1}">NEXT</a>
 		</c:if>
+		
+		
+		
+<a href="./add">ADD</a>
 	</div>
-
 
 </body>
 </html>

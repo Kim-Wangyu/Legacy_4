@@ -3,17 +3,30 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.iu.s1.board.notice.NoticeDAO">
+<mapper namespace="com.iu.s1.board.qna.QnaDAO">
 
-	<update id="update" parameterType="NoticeDTO">
-		UPDATE NOTICE SET TITLE=#{title}, contents=#{contents}
+	<insert id="reply" parameterType="QnaDTO">
+		INSERT INTO QNA 
+		VALUES
+		(QNA_SEQ.NEXTVAL,#{title},#{contents},#{writer},sysdate,0,#{ref},#{step},#{depth})
+	</insert>
+
+
+
+<update id="stepUpdate" parameterType="QnaDTO">
+	update qna set step=step+1
+	where ref=#{ref} and step>#{step}
+</update>
+
+	<update id="update" parameterType="QnaDTO">
+		UPDATE QNA SET TITLE=#{title}, contents=#{contents},writer=#{writer}
 		WHERE num=#{num}
 	</update>
 
-	<select id="list" resultType="NoticeDTO">
+	<select id="list" resultType="QnaDTO">
 		SELECT * FROM
 		    (SELECT rownum R, B.* FROM 
-		        (SELECT * FROM NOTICE WHERE 
+		        (SELECT * FROM QNA WHERE 
 		        	NUM>0 
 		        	and 
 		        	
@@ -21,7 +34,7 @@
 		        		<when test="kind=='col1'">
 		        			TITLE
 		        		</when>
-		        			<when test="kind=='col1'">
+		        			<when test="kind=='col2'">
 		        			CONTENTS
 		        		</when>
 		        		<otherwise>
@@ -29,14 +42,14 @@
 		        		</otherwise>
 		        	</choose>
 		        	LIKE '%'||#{search}||'%'
-		            ORDER BY NUM DESC
+		            ORDER BY REF DESC,STEP ASC
 		         ) B
 		     )
 		WHERE R between #{startRow} and #{lastRow}
 	</select>
 
  	<select id="total" resultType="Long" parameterType="Pager">
- 		SELECT COUNT(NUM) FROM NOTICE
+ 		SELECT COUNT(NUM) FROM QNA
  		WHERE
  			NUM>0 
 		    and 
@@ -45,7 +58,7 @@
 		        <when test="kind=='col1'">
 		        	TITLE
 		        </when>
-		           <when test="kind=='col1'">
+		           <when test="kind=='col2'">
 		        	CONTENTS
 		        </when>
 		        <otherwise>
@@ -57,21 +70,23 @@
  	
 
 
-	<insert id="add" parameterType="NoticeDTO">
-		INSERT INTO NOTICE
+	<insert id="add" parameterType="QnaDTO">
+		INSERT INTO QNA
 		VALUES
-		(NOTICE_SEQ.NEXTVAL,#{title},#{contents},#{writer},sysdate,0)
+		(QNA_SEQ.NEXTVAL,#{title},#{contents},#{writer},sysdate,0,qna_seq.currval,0,0)
 
 	</insert>
 
-	<select id="detail" parameterType="NoticeDTO"
-		resultType="NoticeDTO">
-		SELECT * FROM NOTICE WHERE NUM=#{num}
+	<select id="detail" parameterType="QnaDTO"
+		resultType="QnaDTO">
+		SELECT * FROM QNA WHERE NUM=#{num}
 	</select>
 
-	<delete id="delete" parameterType="NoticeDTO">
-		DELETE NOTICE WHERE NUM=#{num}
+	<delete id="delete" parameterType="QnaDTO">
+		DELETE QNA WHERE NUM=#{num}
 	</delete>
+	
+	
 	
 	
 
