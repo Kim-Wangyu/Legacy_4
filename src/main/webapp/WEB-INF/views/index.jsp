@@ -8,6 +8,9 @@
 <title>Insert title here</title>
 
 <c:import url="./template/header_css.jsp"></c:import>
+<script type="text/javascript">
+	
+</script>
 
 </head>
 <body>
