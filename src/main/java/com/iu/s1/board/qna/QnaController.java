@@ -16,6 +16,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.iu.s1.board.BoardDTO;
 import com.iu.s1.board.notice.NoticeDTO;
+import com.iu.s1.file.FileDTO;
+import com.iu.s1.member.MemberFileDTO;
 import com.iu.s1.util.Pager;
 
 @Controller
@@ -29,6 +31,23 @@ public class QnaController {
 	public String board() {
 		return "qna";
 	}
+	
+	
+	//fileDown
+	@RequestMapping(value = "fileDown", method = RequestMethod.GET)
+	public ModelAndView fileDown(QnaFileDTO qnaFileDTO)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		qnaFileDTO =qnaService.detailFile(qnaFileDTO);
+		
+	
+		mv.setViewName("fileDown");  //파일 다운로드하는 클래스로감 원래는 jsp경로였음
+		mv.addObject("file",qnaFileDTO);
+		
+		
+		return mv;
+		
+	}
+	
 	
 	@RequestMapping(value = "reply", method = RequestMethod.POST)
 	public ModelAndView reply(QnaDTO qnaDTO)throws Exception{

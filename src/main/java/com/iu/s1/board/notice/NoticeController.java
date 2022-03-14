@@ -28,6 +28,18 @@ public class NoticeController {
 		return "notice";
 	}
 	
+	@RequestMapping(value = "fileDown",method = RequestMethod.GET)
+	public ModelAndView fileDown(NoticeFileDTO noticeFileDTO)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		noticeFileDTO = noticeService.detailFile(noticeFileDTO);
+		
+		mv.setViewName("fileDown"); //객체이름
+		mv.addObject("file",noticeFileDTO);
+		
+		return mv;
+		
+	}
+	
 	@RequestMapping(value = "update",method = RequestMethod.GET)
 	public String update(NoticeDTO noticeDTO,Model model)throws Exception{
 		BoardDTO boardDTO = noticeService.detail(noticeDTO);

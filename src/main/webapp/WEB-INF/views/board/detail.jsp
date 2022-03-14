@@ -19,7 +19,8 @@
 
 <div>
 	<c:forEach items="${dto.fileDTOs}" var="f">
-		<a href="../resources/upload/${board}/${f.fileName}">${f.oriName}</a>
+		<!-- <a href="../resources/upload/${board}/${f.fileName}">${f.oriName}</a>   클릭해서 보기     -->
+		<a href="./fileDown?fileNum=${f.fileNum}">${f.oriName}</a>
 	
 	</c:forEach>
 </div>

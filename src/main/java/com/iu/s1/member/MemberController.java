@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttribute;
@@ -22,6 +23,28 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
+	@ModelAttribute("board")
+	public String getBoard() {
+		return "member";
+	}
+	
+	//fileDown
+	@RequestMapping(value = "photoDown", method = RequestMethod.GET)
+	public ModelAndView fileDown(MemberFileDTO memberFileDTO)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("fileDown");  //파일 다운로드하는 클래스로감 원래는 jsp경로였음
+		
+		
+		
+		memberFileDTO =memberService.detailFile(memberFileDTO);
+		
+		mv.addObject("file",memberFileDTO);
+		
+		
+		return mv;
+		
+	}
+	
 	//mypage
 	@RequestMapping(value = "mypage", method = RequestMethod.GET)
 	public ModelAndView mypage(HttpSession session)throws Exception{
@@ -30,6 +53,7 @@ public class MemberController {
 		memberDTO= memberService.mypage(memberDTO);
 		mv.setViewName("member/mypage");
 		mv.addObject("dto",memberDTO);
+		
 		return mv;
 		
 		

@@ -9,6 +9,8 @@ import org.springframework.web.multipart.MultipartFile;
 import com.iu.s1.board.BoardDTO;
 import com.iu.s1.board.BoardService;
 import com.iu.s1.board.notice.NoticeFileDTO;
+import com.iu.s1.file.FileDTO;
+import com.iu.s1.member.MemberFileDTO;
 import com.iu.s1.util.FileManager;
 import com.iu.s1.util.Pager;
 
@@ -19,6 +21,12 @@ public class QnaService implements BoardService {
 	private QnaDAO qnaDAO;
 	@Autowired
 	private FileManager fileManager;
+	
+	
+	public QnaFileDTO detailFile(QnaFileDTO qnaFileDTO)throws Exception{
+		return qnaDAO.detailFile(qnaFileDTO);
+	}
+	
 
 	@Override
 	public List<BoardDTO> list(Pager pager) throws Exception {

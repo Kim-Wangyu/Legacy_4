@@ -5,6 +5,11 @@
 
 <mapper namespace="com.iu.s1.board.notice.NoticeDAO">
 
+<select id="detailFile" parameterType="NoticeFileDTO" resultType="NoticeFileDTO">
+	SELECT * FROM NOTICEFILE
+	WHERE FILENUM=#{fileNum}
+</select>
+
 	<update id="update" parameterType="NoticeDTO">
 		UPDATE NOTICE SET TITLE=#{title}, contents=#{contents}
 		WHERE num=#{num}
