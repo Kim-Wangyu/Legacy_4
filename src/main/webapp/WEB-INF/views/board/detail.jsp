@@ -10,12 +10,19 @@
 <body>
 <h1>${board} Detail Page</h1>
 
-<h3>NoticeNum : ${dto.num}</h3>
-<h3>NoticeTitle : ${dto.title}</h3>
-<h3>NoticeContents : ${dto.contents}</h3>
-<h3>NoticeWriter : ${dto.writer}</h3>
-<h3>NoticeregDate : ${dto.regDate}</h3>
-<h3>NoticeHit : ${dto.hit}</h3>
+<h3>Num : ${dto.num}</h3>
+<h3>Title : ${dto.title}</h3>
+<h3>Contents : ${dto.contents}</h3>
+<h3>Writer : ${dto.writer}</h3>
+<h3>regDate : ${dto.regDate}</h3>
+<h3>Hit : ${dto.hit}</h3>
+
+<div>
+	<c:forEach items="${dto.fileDTOs}" var="f">
+		<a href="../resources/upload/${board}/${f.fileName}">${f.oriName}</a>
+	
+	</c:forEach>
+</div>
 
 	<a href="./list">List</a>
 	

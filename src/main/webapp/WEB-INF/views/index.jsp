@@ -11,10 +11,15 @@
 <script type="text/javascript">
 	
 </script>
+<style type="text/css">
+	
+</style>
 
 </head>
 <body>
 	<c:import url="./template/header.jsp"></c:import>
+	
+
 
 	<h1>Index Page</h1>
 
@@ -35,5 +40,10 @@
 	</div>
 
 	<P>The time on the server is ${serverTime}.</P>
+	
+		<div>
+		<img alt="" src="./resources/images/pic.jpg">
+	</div>
+	<img alt="" src="./resources/upload/member/2003e7e6-3c0a-427a-a158-4c6636235eac_iu.jfif">
 </body>
 </html>
