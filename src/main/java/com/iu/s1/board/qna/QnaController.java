@@ -72,6 +72,8 @@ public class QnaController {
 		return "redirect:./list";
 	}
 	
+
+	
 	@RequestMapping(value = "update",method = RequestMethod.GET)
 	public String update(QnaDTO qnaDTO,Model model)throws Exception{
 		BoardDTO boardDTO = qnaService.detail(qnaDTO);

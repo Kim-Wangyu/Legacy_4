@@ -73,9 +73,21 @@ public class QnaService implements BoardService {
 
 	@Override
 	public int delete(BoardDTO boardDTO) throws Exception {
-		// TODO Auto-generated method stub
-		return qnaDAO.delete(boardDTO);
+		// TODO Auto-generated method stub 
+		//num으로 HDD에 저장된 파일명 조회
+		List<QnaFileDTO> ar = qnaDAO.listFile(boardDTO);
+		int result = qnaDAO.delete(boardDTO);
+		
+		if(result >0) {
+			for(QnaFileDTO dto:ar) {
+				boolean check = fileManager.remove("resources/upload/qna/", dto.getFileName());
+			}
+		}
+		
+		return result;
 	}
+	
+
 	
 	public int reply(QnaDTO qnaDTO)throws Exception{
 		//qnaDTO.num:  부모글의 글번호
