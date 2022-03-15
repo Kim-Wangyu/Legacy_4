@@ -16,6 +16,18 @@ public class FileManager {
 	
 	@Autowired
 	private ServletContext servletContext;   //내장객체
+	
+	
+	public boolean remove(String path, String fileName)throws Exception{
+		//파일을 HDD에서 삭제
+		//저장된 폴더명, 저장된 파일명 
+		path = servletContext.getRealPath(path);  //실제경로를 받아옴
+		
+		File file = new File(path, fileName);
+		
+		return file.delete();
+		
+	}
 
 	public String save(MultipartFile multipartFile, String path)throws Exception{  //path 를service qna랑 notice한테서 받아옴,경로받아옴 변수로써야되니까
 		//파일 저장은 tomcat이 아니라 OS에서 저장
