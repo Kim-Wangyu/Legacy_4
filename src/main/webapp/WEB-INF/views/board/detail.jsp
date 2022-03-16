@@ -27,8 +27,11 @@
 
 	<a href="./list">List</a>
 	
+	<c:if test="${member.id eq dto.writer}">  <!-- 작성자 아이디가 같으면 삭제, 업데이트 보임 -->
 	<a href="./update?num=${dto.num}">update</a>
 	<a href="./delete?num=${dto.num}">DELETE</a>
+	</c:if>
+	
 	<c:if test="${board ne 'notice'}">
 		<a href="./reply?num=${dto.num}">Reply</a>
 	</c:if>

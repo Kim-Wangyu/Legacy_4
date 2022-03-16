@@ -74,7 +74,7 @@ public class QnaController {
 	
 
 	
-	@RequestMapping(value = "update",method = RequestMethod.GET)
+	@RequestMapping(value = "update",method = RequestMethod.GET)   //폼으로 이동,업데이트 눌렀을때
 	public String update(QnaDTO qnaDTO,Model model)throws Exception{
 		BoardDTO boardDTO = qnaService.detail(qnaDTO);
 		model.addAttribute("dto",boardDTO);

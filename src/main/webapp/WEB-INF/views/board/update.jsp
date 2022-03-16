@@ -13,8 +13,8 @@
 		<input type="hidden" name="num" value="${dto.num}" readonly="readonly">
 		title<input type="text" name="title" value="${dto.title}">
 		contents <textarea name="contents" rows="" cols="">${dto.contents}</textarea> <!-- 이거는 value말고 사이에 dto적기 -->
-		writer<input type="text" name="writer" value="${dto.writer}">
-
+		writer<input type="text" readonly="readonly" name="writer" value="${dto.writer}">
+	
 		
 		<input type="submit" value="update">
 		

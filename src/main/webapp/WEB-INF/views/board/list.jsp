@@ -80,8 +80,9 @@
 		</c:if>
 		
 		
-		
-<a href="./add">ADD</a>
+		<c:if test="${not empty member}">  <!-- 로그인 한 사람만 ADD보이게하기 -->
+			<a href="./add">ADD</a>
+		</c:if>
 	</div>
 
 </body>
