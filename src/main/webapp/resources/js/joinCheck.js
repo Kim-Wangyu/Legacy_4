@@ -4,6 +4,7 @@
  
  const check=document.getElementsByClassName('check');
  const checkAll=document.getElementById('checkAll');
+ const rules =document.getElementById('rules');
  const btn = document.getElementById('btn');
  
  
@@ -18,18 +19,30 @@
  }); 	
 
 
-for(ch of check){
-	ch.addEventListener("click",function(){
-		let final=true;
- 	
-		for(c of check){
+rules.addEventListener("click",function(){
+	let final=true;
+	
+	for(c of check){
 			if(!c.checked){
 				final=false;
 			}
 		}
 		checkAll.checked=final;
-	})
-};
+
+});
+
+//for(ch of check){
+//	ch.addEventListener("click",function(){
+//		let final=true;
+ 	
+//		for(c of check){
+//			if(!c.checked){
+//				final=false;
+//			}
+//		}
+//		checkAll.checked=final;
+//	})
+//};
 
 
 btn.addEventListener("click", function(){
