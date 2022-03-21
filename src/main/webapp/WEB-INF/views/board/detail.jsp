@@ -25,6 +25,22 @@
 	</c:forEach>
 </div>
 
+<hr>
+
+<form action="../noticeReply/add" method="post" enctype="application/x-www-form-urlencoded">
+	NUM <input type="hidden" name="num" value="${dto.num}" id="num">
+	Writer <input type="text" readonly="readonly" name="writer" id="writer" value="${member.id}">
+	Contents <textarea rows="" cols="" name="contents" id="contents"></textarea>
+	<button type="button" id="reply">REPLY</button>
+
+</form>
+
+
+<table id="replyResult">
+	
+</table>
+
+
 	<a href="./list">List</a>
 	
 	<c:if test="${member.id eq dto.writer}">  <!-- 작성자 아이디가 같으면 삭제, 업데이트 보임 -->
@@ -35,5 +51,7 @@
 	<c:if test="${board ne 'notice'}">
 		<a href="./reply?num=${dto.num}">Reply</a>
 	</c:if>
+	
+	<script src="../resources/js/noticeReply.js"></script>
 </body>
 </html>
